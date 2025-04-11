@@ -1,0 +1,734 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <style>
+      input {
+        padding: 5px 10px;
+      }
+
+      input[type="text"] {
+        border: none;
+        border-bottom: 1px dashed;
+      }
+
+      input[type="text"]:focus {
+        border: none;
+        border-bottom: 1px dashed;
+      }
+
+      input[type="date"] {
+        border: none;
+        border-bottom: 1px dashed;
+      }
+
+      input[type="date"]:focus {
+        border: none;
+        border-bottom: 1px dashed;
+      }
+
+      td {
+        padding: 5px 10px;
+        font-family: Arial, Tahoma, sans-serif;
+        text-align: justify;
+      }
+
+      div {
+        text-align: justify;
+      }
+
+      h6 {
+        margin: 0;
+      }
+
+      .text-center {
+        text-align: center !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <table
+        align="center"
+        border="0"
+        cellSpacing="true"
+        cellPadding="true"
+        width="100%"
+        style="margin: auto;"
+      >
+        <!-- {/* National Title */} -->
+        <tbody>
+          <tr>
+            <td>
+              <table border="0" width="100%">
+                <tbody>
+                  <tr>
+                    <td>
+                      <h3 class="text-center mb-0">
+                        THE UNITED REPUBLIC OF TANZANIA
+                      </h3>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="text-center">
+                        <b>Uhuru na Umoja</b>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-center">
+                      ---------------------------
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <!-- {/* Contract Title */} -->
+          <tr>
+            <td>
+              <table
+                border="0"
+                cellSpacing="true"
+                cellPadding="true"
+                width="100%"
+              >
+                <tbody>
+                  <tr>
+                    <td>
+                      <h3 class="text-center mb-0 mt-10">
+                        DEPOSIT AGREEMENT
+                      </h3>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="font-italic text-center mb-10">
+                        (Regarding the Sale and Purchase of House and Land)
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <!-- {/* Date and Location Info */} -->
+          <tr>
+            <td>
+              <table border="0" width="100%">
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="mb-20">
+                        Today, on <%= dateContract %> . At <%=
+                        addressContract %> , We include:
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <!-- {/* Party A (Buyer) */} -->
+          <tr>
+            <td>
+              <table border="0" width="100%">
+                <tbody>
+                  <% buyers.forEach(buyer => { %>
+                  <tr>
+                    <td>
+                      <div class="font-weight-bold mb-20">
+                        I. The Depositor (Hereinafter referred to as Party A):
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Mr./Ms.: <%= buyer.fullName %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Date of Birth: <%= buyer.birthday %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              ID Card Number: <%= buyer.idNumber %>
+                            </td>
+
+                            <td>
+                              Issued on: <%= buyer.issueDate %>
+                            </td>
+
+                            <td>
+                              Place of Issue: <%= buyer.issuedBy %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Permanent Address: <%= buyer.address %>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <!-- {/* Party B (Seller) */} -->
+          <tr>
+            <td>
+              <table border="0" width="100%">
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="font-weight-bold mb-20 mt-20">
+                        II. The Recipient of the Deposit (Hereinafter referred to as Party B):
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table>
+                        <tbody>
+                          <% sellers.forEach(seller => { %>
+                          <tr>
+                            <td>
+                              Mr./Ms.: <%= seller.fullName %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Date of Birth: <%= seller.birthday %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              ID Card Number: <%= seller.idNumber %>
+                            </td>
+                            <td>
+                              Issued on: <%= seller.issueDate %>
+                            </td>
+                            <td>
+                              Place of Issue: <%= seller.issuedBy %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Permanent Address: <%= seller.address %>
+                            </td>
+                          </tr>
+                          <% }) %>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <!-- <tr>
+                    <td>
+                      <div class="font-weight-bold mb-20 mt-20">
+                        Members of Party B's Household:
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td>
+                              Mr./Ms.:
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Date of Birth:
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              ID Card Number:
+                            </td>
+
+                            <td>
+                              Date of issue:
+</td>
+<td>
+  Place of issue:
+</td>
+</tr>
+<tr>
+<td>
+  Permanent residence:
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<!-- {/* Witness */} -->
+<tr>
+<td>
+<table>
+<tbody>
+<tr>
+<td>
+<div class="font-weight-bold mb-20 mt-20">
+  III. Co-witness:
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<table>
+<tbody>
+<tr>
+<td>
+  Mr./Mrs.:
+</td>
+</tr>
+<tr>
+<td>
+  Date of birth:
+</td>
+</tr>
+<tr>
+<td>
+  National ID number:
+</td>
+<td>
+  Date of issue:
+</td>
+<td>
+  Place of issue:
+</td>
+</tr>
+<tr>
+<td>
+  Permanent residence:
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<!-- {/* Terms */} -->
+<tr>
+<td>
+<table>
+<tbody>
+<tr>
+<td>
+<div class="font-weight-bold mb-20 mt-20">
+  IV. Both parties agree to enter into a Deposit Agreement with the following terms:
+</div>
+</td>
+</tr>
+<!-- {/* Article 1: Deposit Asset */} -->
+<tr>
+<td>
+<table>
+<tbody>
+<tr>
+<td>
+<div class="font-weight-bold mb-20">
+  ARTICLE 1: DEPOSIT ASSET
+</div>
+</td>
+</tr>
+<tr>
+<td>
+  Party A deposits cash to Party B in the amount of: <%= downPayment %> TZS
+</td>
+</tr>
+<tr>
+<td>
+  In words: <%= downPaymentInWord %> TZS.
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<!-- {/* Article 2 */} -->
+<tr>
+<td>
+<table>
+<tbody>
+<tr>
+<td>
+<div class="font-weight-bold mb-20 mt-20">
+  ARTICLE 2: DEPOSIT PERIOD
+</div>
+</td>
+</tr>
+<tr>
+<td>
+  The deposit period is <%= depositPeriod %> days
+</td>
+</tr>
+<tr>
+<td>Effective from <%= startDeposit %></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<!-- {/* Article 3 */} -->
+<tr>
+<td>
+<table>
+<tbody>
+<tr>
+<td>
+<div class="font-weight-bold mb-20 mt-20">
+  ARTICLE 3: PURPOSE OF DEPOSIT
+</div>
+</td>
+</tr>
+<tr>
+<td>
+  1. By making this deposit, Party A commits to purchasing land from Party B at <%= propertyAddress %>.
+  Party B receives the deposit and commits to selling the legally owned land without any disputes to Party A at:
+  <%= propertyAddress %> with an area of <%= area %> m² for a sale price of <%= transferPrice %> VND.
+</td>
+</tr>
+<tr>
+<td>
+  2. During the deposit period, Party B commits to completing the legal procedures for transferring land use rights
+  to Party A. Party A commits to paying <%= remainingAmount %> VND when both parties sign the land purchase contract at the State Notary Office. 
+  The remaining amount will be paid when Party B hands over the land use certificate. 
+  Party B commits to delivering the land use certificate within 7 days from the date both parties sign the contract at the Notary Office. 
+  Party B is responsible for paying all taxes arising from the transaction (land tax, transfer tax), and Party A does not bear any additional fees.
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<!-- {/* Article 4 */} -->
+<tr>
+<td>
+<table>
+<tbody>
+<tr>
+<td>
+<div class="font-weight-bold mb-20 mt-20">
+  ARTICLE 4: OBLIGATIONS AND RIGHTS OF PARTY A
+</div>
+</td>
+</tr>
+<tr>
+<td>1. Party A has the following obligations:</td>
+</tr>
+<tr>
+<td>
+  a) Pay the deposit amount to Party B immediately upon signing the deposit contract;
+</td>
+</tr>
+<tr>
+<td>
+  b) Conclude or fulfill the civil obligations agreed in Article 3. If Party A refuses to conclude or fulfill the obligations 
+  (the deposit purpose is not achieved), Party A will forfeit the deposit.
+</td>
+</tr>
+<tr>
+<td>2. Party A has the following rights:</td>
+</tr>
+<tr>
+<td>
+  a) Receive the deposit back from Party B or deduct it from the payment obligation to Party B when both parties fulfill 
+  the civil obligations agreed in Article 3 (the deposit purpose is achieved);
+</td>
+</tr>
+<tr>
+<td>
+  b) Receive the deposit back along with an additional amount equal to the deposit in case Party B refuses to conclude or 
+  fulfill the civil obligations agreed in Article 3 (the deposit purpose is not achieved);
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<!-- {/* Article 5 */} -->
+<tr>
+<td>
+<table>
+<tbody>
+<tr>
+<td>
+<div class="font-weight-bold mb-20 mt-20">
+  ARTICLE 5: OBLIGATIONS AND RIGHTS OF PARTY B
+</div>
+</td>
+</tr>
+<tr>
+<td>1. Party B has the following obligations:</td>
+</tr>
+<tr>
+<td>
+  a) Return the deposit to Party A or deduct it from the payment obligation when both parties fulfill 
+  the civil obligations agreed in Article 3 (the deposit purpose is achieved);
+</td>
+</tr>
+<tr>
+<td>
+  b) Return the deposit along with an additional amount equal to the deposit to Party A in case Party B refuses to conclude or 
+  fulfill the civil obligations agreed in Article 3 (the deposit purpose is not achieved);
+</td>
+</tr>
+<tr>
+<td>
+  c) Party B must clean up the land when handing it over to Party A.
+</td>
+</tr>
+<tr>
+<td>2. Party B has the following rights:</td>
+</tr>
+<tr>
+<td>
+  Party B owns the deposit amount if Party A refuses to conclude or fulfill the civil obligations agreed in Article 3 (the deposit purpose is not achieved).
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<!-- {/* Article 6 */} -->
+<tr>
+<td>
+<table>
+<tbody>
+<tr>
+<td>
+<div class="font-weight-bold mb-20 mt-20">
+  ARTICLE 6: DISPUTE RESOLUTION
+</div>
+</td>
+</tr>
+<tr>
+<td>
+  During the execution of the contract, if disputes arise, both parties will negotiate to resolve them, respecting each other's rights. 
+  If the land in question is part of a planned area and cannot be transacted, Party B must refund 100% of the deposit received from Party A. 
+  If the dispute cannot be resolved, either party has the right to file a lawsuit at a competent court for resolution according to legal regulations. 
+  All disputes will be adjudicated under the laws of Vietnam.
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<!-- {/* Article 7 */} -->
+
+                  <tr>
+                    <td>
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <div class="font-weight-bold mb-20 mt-20">
+                                ĐIỀU 7: CAM ĐOAN CỦA CÁC BÊN
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Bên A và bên B chịu trách nhiệm trước pháp luật về
+                              những lời cam đoan sau đây:
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              1. Việc giao kết Hợp đồng này hoàn toàn tự nguyện,
+                              không bị lừa dối hoặc ép buộc.
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              2. Thực hiện đúng và đầy đủ tất cả các thoả thuận
+                              đã ghi trong Hợp đồng này.
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              3. Bên B đã nhận đủ số tiền đặt cọc nêu trong điều
+                              1 từ bên A
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <!-- {/* điều 8 */} -->
+                  <tr>
+                    <td>
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <div class="font-weight-bold mb-20 mt-20">
+                                ĐIỀU 8: ĐIỀU KHOẢN CUỐI CÙNG
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              1. Hai bên công nhận đã hiểu rõ quyền, nghĩa vụ và
+                              lợi ích hợp pháp của mình, ý nghĩa và hậu quả pháp
+                              lý của việc giao kết Hợp đồng này.
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              2. Hai bên đã tự đọc Hợp đồng, đã hiểu và đồng ý
+                              tất cả các điều khoản ghi trong Hợp đồng và ký vào
+                              Hợp đồng này trước sự có mặt của người làm chứng.
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              3. Hợp đồng có hiệu lực từ <%= timeContractValid
+                              %>
+                              <!-- <input type="date" class="" /> -->
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Hợp đồng Đặt Cọc bao gồm 03 trang được chia làm
+                              bốn bản có giá trị pháp lý như nhau, mỗi bên giữ
+                              hai bản.
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <!-- {/* ngày */} -->
+          <tr>
+            <td>
+              <table
+                width="100%"
+                cellSpacing="true"
+                cellPadding="true"
+                class="mt-20 mb-20"
+              >
+                <tbody>
+                  <tr>
+                    <td style="width: 50%; text-align: center;"></td>
+                    <td style="width: 50%; text-align: center;">
+                      <%= signAddress %> , ngày <%= signDate %>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <!-- {/* chữ ký */} -->
+          <tr>
+            <td>
+              <table border="0" width="100%">
+                <tbody>
+                  <tr>
+                    <td style="width: 50%; text-align: center;">
+                      <table border="0" width="100%">
+                        <tbody>
+                          <tr>
+                            <td class="text-center">Bên A</td>
+                          </tr>
+                          <tr>
+                            <td class="text-center">
+                              (Ký, ghi rõ họ tên)
+                            </td>
+                          </tr>
+                          <tr>
+                            <td height="90"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                    <td style="width: 50%; text-align: center;">
+                      <table border="0" width="100%">
+                        <tbody>
+                          <tr>
+                            <td class="text-center">Bên B</td>
+                          </tr>
+                          <tr>
+                            <td class="text-center">
+                              (Ký, ghi rõ họ tên)
+                            </td>
+                          </tr>
+                          <tr>
+                            <td height="90"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table border="0" width="100%">
+                <tbody>
+                  <tr>
+                    <td style="width: 50%; text-align: center;">
+                      <table border="0" width="100%">
+                        <tbody>
+                          <tr>
+                            <td class="text-center">Người làm chứng</td>
+                          </tr>
+                          <tr>
+                            <td class="text-center">
+                              (Ký, ghi rõ họ tên)
+                            </td>
+                          </tr>
+                          <tr>
+                            <td height="90"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                    <td style="width: 50%; text-align: center;">
+                      <table border="0" width="100%">
+                        <tbody>
+                          <tr>
+                            <td class="text-center">Người làm chứng</td>
+                          </tr>
+                          <tr>
+                            <td class="text-center">
+                              (Ký, ghi rõ họ tên)
+                            </td>
+                          </tr>
+                          <tr>
+                            <td height="90"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
