@@ -20,7 +20,7 @@ export default function propertyPendingReducer(state = initialState, action) {
     case ACTIVATE_CERTIFICATE_REQUEST:
       return { ...state, loading: true };
     case ACTIVATE_CERT_WAIT_BLOCKCHAIN_CONFIRM:
-      toast(<ToastLoading message={"Đang xác nhận tài sản..."} />, {
+      toast(<ToastLoading message={"Verifying Asset..."} />, {
         toastId: action.payload,
         autoClose: false,
         position: toast.POSITION.BOTTOM_RIGHT,
@@ -29,7 +29,7 @@ export default function propertyPendingReducer(state = initialState, action) {
     case ACTIVATE_CERTIFICATE_SUCCESS:
       toast.update(action.payload.txHash, {
         render: (
-          <ToastSuccess message={"Xác nhận tài sản tài sản thành công!"} />
+          <ToastSuccess message={"Asset Approval Imefanikiwa!"} />
         ),
         type: toast.TYPE.SUCCESS,
         autoClose: 5000,

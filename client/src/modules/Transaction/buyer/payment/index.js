@@ -70,27 +70,27 @@ const Payment = (props) => {
     <div className="card">
       <div className="card-body">
         <div className="agent-details">
-          <h5>Giá trị giao dịch</h5>
+          <h5>Transaction Value</h5>
           <ul className="address-list">
             <li>
-              <span>Số tiền chuyển:</span>
+              <span>Transfer Amount:</span>
               {formatCurrency(
                 convertWeiToVND(
                   props.transaction.transferPrice -
                     props.transaction.depositPrice
                 )
               )}{" "}
-              VNĐ
+              TZS
             </li>
             <li>
-              <span>Thuế trước bạ:</span>
+              <span>Registration Tax:</span>
               {formatCurrency(
                 convertWeiToVND(props.transaction.transferPrice * 0.005)
               )}{" "}
-              VNĐ
+              TZS
             </li>
             <li>
-              <span>Tổng số tiền chuyển:</span>
+              <span>Total Amount:</span>
               {formatCurrency(
                 convertWeiToVND(
                   props.transaction.transferPrice -
@@ -98,20 +98,18 @@ const Payment = (props) => {
                     props.transaction.transferPrice * 0.005
                 )
               )}{" "}
-              VNĐ
+              TZS
             </li>
           </ul>
         </div>
         <div className="agent-details">
-          <h5>Lưu ý:</h5>
+          <h5>Note:</h5>
           <ul className="address-list">
             <li>
-              Với việc xác nhận này bạn sẽ chuyển số tiền giao dich cho người
-              bán và chờ xác nhận để hoàn tất việc nhận tài sản
+              With this confirmation you will transfer the transaction amount to the seller and wait for confirmation to complete the receipt of the property.
             </li>
             <li>
-              Bạn có thể hủy giao dịch nếu người bán chưa xác nhận và mất tiền
-              đặt cọc
+              You can cancel the transaction if the seller has not confirmed and reclaim your deposit.
             </li>
           </ul>
         </div>
@@ -121,7 +119,7 @@ const Payment = (props) => {
             className="btn v3 float-right mt-5 "
             onClick={handleClickOpen}
           >
-            <i className="ion-android-cancel"></i> Chuyển số tiền còn lại
+            <i className="ion-android-"></i> Malizia Transfer
           </button>
         )}
       </div>
@@ -131,55 +129,47 @@ const Payment = (props) => {
         open={open}
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Chuyển tiền
+          Malizia Transfer
         </DialogTitle>
         <DialogContent dividers>
           <div className="agent-details">
-            <h5>Nghĩa vụ bên mua</h5>
+            <h5>Mnunuzi</h5>
             <ol className="address-list">
               <li>
-                a) Trả đủ tiền, đúng thời hạn và đúng phương thức đã thoả thuận
-                cho bên bán;
+                a)Pay the seller in full, on time and in the agreed manner;
               </li>
               <li>
-                b) Đăng ký quyền sử dụng đất, quyền sở hữu tài sản gắn liền với
-                đất theo quy định của pháp luật về đất đai;
+                b) ;
               </li>
               <li>
-                c) Bảo đảm quyền của người thứ ba đối với đất chuyển nhượng;
+                c) ;
               </li>
               <li>
-                d) Thực hiện các nghĩa vụ khác theo quy định của pháp luật về
-                đất đai
+                d) 
               </li>
             </ol>
           </div>
           <div className="agent-details">
-            <h5>Cam đoan của bên mua</h5>
+            <h5>Buyer's Guarantee</h5>
             <ol className="address-list">
               <li>
-                a) Những thông tin về nhân thân đã ghi trong Hợp đồng này là
-                đúng sự thật;
+                a) ;
               </li>
               <li>
-                b) Đã xem xét kỹ, biết rõ về thửa đất và tài sản gắn liền với
-                đất nêu tại Điều 1 của Hợp đồng này và các giấy tờ về quyền sử
-                dụng đất, quyền sở hữu tài sản gắn liền với đất;
+                b) ;
               </li>
               <li>
-                c) Việc giao kết Hợp đồng này hoàn toàn tự nguyện, không bị lừa
-                dối, không bị ép buộc;
+                c) ;
               </li>
               <li>
-                d) Thực hiện đúng và đầy đủ các thoả thuận đã ghi trong Hợp đồng
-                này.
+                d) 
               </li>
             </ol>
           </div>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose} color="primary">
-            Hủy
+            Cancel
           </Button>
           <Button
             onClick={() => {
@@ -188,7 +178,7 @@ const Payment = (props) => {
             }}
             color="primary"
           >
-            Xác nhận
+            Confirm
           </Button>
         </DialogActions>
       </Dialog>

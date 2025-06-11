@@ -7,7 +7,7 @@ const checkResourceOwner = (listOwner, currentUser) => {
   if (!listOwner.includes(currentUser.publicAddress))
     throw new ErrorHandler(
       403,
-      "You are not permission access to this resource"
+      "You are not permitted access to this resource"
     );
 };
 
@@ -107,7 +107,7 @@ export async function updateCertification(req, res, next) {
     );
     return res
       .status(200)
-      .json({ statusCode: 200, message: "Update certification successfully" });
+      .json({ statusCode: 200, message: "Update certification successfull" });
   } catch (error) {
     next(error);
   }
@@ -128,28 +128,43 @@ export async function deleteCertification(req, res, next) {
     // or status code 204 without data in the response
     return res
       .status(200)
-      .json({ statusCode: 200, message: "Delete certification successfully" });
+      .json({ statusCode: 200, message: "Delete certification successfull" });
   } catch (error) {
     next(error);
   }
 }
 
+//edit cert
 export async function editCertification(req, res, next) {
   try {
-    var certification = await Certification.findOne({
-      transactionHash: req.params.txHash
-    }).lean();
-    console.log(req.params.txHash);
+    // Validate transaction hash format
+    const txHash = req.params.txHash;
+    if (!txHash || typeof txHash !== 'string' || txHash.length !== 66) {
+      throw new ErrorHandler(400, "Invalid transaction hash format");
+    }
+
+    // Find the certification
+    const certification = await Certification.findOne({
+      transactionHash: txHash
+    });
+    
+    if (!certification) {
+      throw new ErrorHandler(404, "Certification not found");
+    }
+
     const { publicAddress } = req.user;
     const { owners } = certification;
+    
     // Check resource owner
     if (!owners.includes(publicAddress)) {
       throw new ErrorHandler(
         403,
-        "You are not permitted to access to this resource"
+        "You are not permitted to access this resource"
       );
     }
-    let {
+
+    // Validate required fields
+    const {
       description,
       numOfBedrooms,
       numOfBathrooms,
@@ -159,7 +174,9 @@ export async function editCertification(req, res, next) {
       utilities,
       title
     } = req.body;
-    let query = {
+
+    // Update the certification
+    const query = {
       moreInfo: {
         description,
         numOfBedrooms,
@@ -171,13 +188,18 @@ export async function editCertification(req, res, next) {
         title
       }
     };
-    const a = await Certification.updateOne(
-      { transactionHash: req.params.txHash },
+
+    const updatedCertification = await Certification.findOneAndUpdate(
+      { transactionHash: txHash },
       query,
       { new: true }
     );
-    console.log("editCertification -> a", a);
-    return res.status(200).json({ statusCode: 200, data: certification });
+
+    return res.status(200).json({ 
+      statusCode: 200, 
+      data: updatedCertification,
+      message: "Certification updated successfully" 
+    });
   } catch (error) {
     next(error);
   }
@@ -195,7 +217,7 @@ export async function activateCertification(req, res, next) {
     if (!owners.includes(publicAddress)) {
       throw new ErrorHandler(
         403,
-        "You are not permission access to this resource"
+        "You are not permitted access to this resource"
       );
     }
     // Check if not yet activated
@@ -270,7 +292,7 @@ export async function cancelSale(req, res, next) {
     if (!owners.includes(publicAddress)) {
       throw new ErrorHandler(
         403,
-        "You are not permission access to this resource"
+        "You are not permitted access to this resource"
       );
     }
     var certification = await Certification.findByIdAndUpdate(

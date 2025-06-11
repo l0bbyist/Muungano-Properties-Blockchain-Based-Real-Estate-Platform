@@ -124,12 +124,12 @@ class Property extends Component {
                 <div className="listing-desc-wrap mr-30">
                   <div className="list-details-wrap">
                     <div id="description" className="list-details-section">
-                      <h4>Mô tả</h4>
+                      <h4>Description</h4>
                       <div className="overview-content">
                         <p className="mb-10">{property.moreInfo.description}</p>
                       </div>
                       <div className="mt-40">
-                        <h4 className="list-subtitle">Địa chỉ</h4>
+                        <h4 className="list-subtitle">Address</h4>
                         <a
                           target="_blank"
                           href={`http://maps.google.com/?q=${property.properties.landLot.address}`}

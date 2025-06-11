@@ -76,19 +76,31 @@ export class EditProperty extends Component {
     });
   }
   handleSubmit = async (e) => {
-    e.preventDefault();
-    // console.log(this.state.price.toString().replace(/\./g, ""));
+  e.preventDefault();
+  
+  try {
+    // Only send the specific fields the backend expects
+    const requestData = {
+      description: this.state.description,
+      numOfBedrooms: this.state.numOfBedrooms,
+      numOfBathrooms: this.state.numOfBathrooms,
+      areaFloor: this.state.areaFloor,
+      price: this.state.price.toString().replace(/\./g, ""),
+      galleries: this.state.galleries,
+      utilities: this.state.utilities,
+      title: this.state.title
+    };
+    
     let response = await axios({
       method: "put",
       url: `${process.env.REACT_APP_BASE_URL_API}/certification/edit/${this.props.match.params.hash}`,
-      data: {
-        ...this.state,
-        price: this.state.price.toString().replace(/\./g, ""),
-      },
+      data: requestData,
       headers: {
         Authorization: `Bearer ${Cookie.getCookie("accessToken")}`,
+        'Content-Type': 'application/json'
       },
     });
+    
     if (response.status === 200) {
       toast(<ToastSuccess message={"Update Successful!"} />, {
         autoClose: 2000,
@@ -99,13 +111,18 @@ export class EditProperty extends Component {
         },
       });
       this.props.history.push("/my-properties");
-      // this.props.history.push(`/property/${this.props.match.params.hash}`);
     } else {
       toast.error("Update Imefeli. Tafadhali Jaribu Tena!", {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
     }
-  };
+  } catch (error) {
+    console.error("Update error:", error.response ? error.response.data : error.message);
+    toast.error("Update Imefeli. Tafadhali Jaribu Tena!", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
+  }
+};
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }

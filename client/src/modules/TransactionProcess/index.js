@@ -30,9 +30,9 @@ const TransactionProcess = (props) => {
   const [steps, setSteps] = useState(2);
   const stepsToName = {
     "1": "Deposit Required",
-    "2": "Chấp nhận",
-    "3": "Thanh toán",
-    "4": "Xác nhận",
+    "2": "Accept",
+    "3": "Pay",
+    "4": "Confirm",
   };
 
   const styleLeftDot = {
@@ -78,7 +78,7 @@ const TransactionProcess = (props) => {
       <div className="row">
         <div className="col-md-3">
           <div className="container py-2">
-            <h4 className="">Quy trình giao dịch</h4>
+            <h4 className="">Transaction Process</h4>
             {/* timeline item 1 */}
             <div
               className="row"
@@ -110,7 +110,7 @@ const TransactionProcess = (props) => {
                 <div className="row">
                   <div className="col">&nbsp;</div>
                 </div>
-                <h5 className=" text-success">Yêu cầu đặc cọc</h5>
+                <h5 className=" text-success">Deposit Required</h5>
               </div>
             </div>
             {/*/row*/}
@@ -150,7 +150,7 @@ const TransactionProcess = (props) => {
                 <div className="row">
                   <div className="col">&nbsp;</div>
                 </div>
-                <h5 className="text-success">Chấp nhận</h5>
+                <h5 className="text-success">Accept</h5>
               </div>
             </div>
             {/*/row*/}
@@ -204,7 +204,7 @@ const TransactionProcess = (props) => {
                 <h5
                   className={currentSteps >= 2 ? "text-success" : "text-muted"}
                 >
-                  Thanh toán
+                  Pay
                 </h5>
               </div>
             </div>
@@ -258,7 +258,7 @@ const TransactionProcess = (props) => {
                 <h5
                   className={currentSteps >= 3 ? "text-success" : "text-muted"}
                 >
-                  Xác nhận
+                  Confirm
                 </h5>
               </div>
             </div>

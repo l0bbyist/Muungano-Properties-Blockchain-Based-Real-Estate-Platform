@@ -129,7 +129,7 @@ const CancelTransaction = (props) => {
       {props.checkExpired && (
         <div>
           <div className="text-center">
-            <h5>Giao dịch đã hết hạn</h5>
+            <h5>The transaction has expired.</h5>
           </div>
           <button
             className="btn v3 float-right mt-5 "
@@ -139,7 +139,7 @@ const CancelTransaction = (props) => {
               )
             }
           >
-            <i className="ion-ios-search"></i> Tra cứu giao dịch tại đây
+            <i className="ion-ios-search"></i> Look up transactions here
           </button>
         </div>
       )}
@@ -152,14 +152,14 @@ const CancelTransaction = (props) => {
             className="btn v3 float-right mt-5 "
             onClick={handleClickOpen}
           >
-            <i className="ion-android-cancel"></i> Hủy giao dịch
+            <i className="ion-android-cancel"></i> Cancel transaction
           </button>
         )}
 
       {props.transaction.state === "CANCELED" && (
         <div>
           <div className="text-center">
-            <h5>Giao dịch đã hủy</h5>
+            <h5>Transaction canceled</h5>
           </div>
           <button
             className="btn v3 float-right mt-5 "
@@ -169,7 +169,7 @@ const CancelTransaction = (props) => {
               )
             }
           >
-            <i className="ion-ios-search"></i> Tra cứu giao dịch tại đây
+            <i className="ion-ios-search"></i> Look up transactions here
           </button>
         </div>
       )}
@@ -177,7 +177,7 @@ const CancelTransaction = (props) => {
       {props.transaction.state === "PAYMENT_CONFIRMED" && (
         <div>
           <div className="text-center">
-            <h5>Giao dịch đã thành công </h5>
+            <h5>Transaction successful </h5>
           </div>
           <button
             className="btn v3 float-right mt-5 "
@@ -187,7 +187,7 @@ const CancelTransaction = (props) => {
               )
             }
           >
-            <i className="ion-ios-search"></i> Tra cứu giao dịch tại đây
+            <i className="ion-ios-search"></i> Look up transactions here
           </button>
         </div>
       )}
@@ -198,27 +198,27 @@ const CancelTransaction = (props) => {
         open={open}
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Hủy giao dịch
+          Cancel Transaction
         </DialogTitle>
         <DialogContent dividers>
           <div className="agent-details">
-            <h5>Giá trị đặt cọc</h5>
+            <h5>Deposit Value</h5>
             <ul className="address-list">
               <li>
-                <span>Người hủy hợp đồng:</span>
+                <span>Cancelling Party:</span>
                 {props.user.fullName} - {props.party}
               </li>
               <li>
-                <span>Số tiền đền bù:</span>
-                {formatCurrency(convertWeiToVND(compensation))} VNĐ
+                <span>Compensation amount:</span>
+                {formatCurrency(convertWeiToVND(compensation))} TZS
               </li>
               <li>
-                <span>Số tiền nhận lại:</span>
-                {formatCurrency(convertWeiToVND(received))} VNĐ
+                <span>Amount received back:</span>
+                {formatCurrency(convertWeiToVND(received))} TZS
               </li>
               <li>
-                <span>Tiền thuế:</span>
-                {formatCurrency(convertWeiToVND(tax))} VNĐ
+                <span>Tax:</span>
+                {formatCurrency(convertWeiToVND(tax))} TZS
               </li>
             </ul>
           </div>
@@ -235,7 +235,7 @@ const CancelTransaction = (props) => {
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose} color="primary">
-            Hủy
+            Cancel
           </Button>
           <Button
             onClick={() => {
@@ -247,7 +247,7 @@ const CancelTransaction = (props) => {
             }}
             color="primary"
           >
-            Xác nhận
+            Confirm
           </Button>
         </DialogActions>
       </Dialog>

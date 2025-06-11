@@ -58,10 +58,10 @@ function TransactionInfo(props) {
       <div className="card-body">
         <div className="row">
           <div className="agent-details col-6">
-            <h5>Tài sản giao dịch</h5>
+            <h5>Assets</h5>
             <ul className="address-list">
               <li>
-                <span>Xem chi tiết tài sản:</span>
+                <span>View property details:</span>
                 <a
                   target="_blank"
                   href={`${process.env.REACT_APP_BASE_URL}/property-standard/${props.property.transactionHash}`}
@@ -70,18 +70,18 @@ function TransactionInfo(props) {
                 </a>
               </li>
               <li>
-                <span>Địa điểm:</span>
+                <span>Location:</span>
                 {address}
               </li>
               <li>
-                <span>Giá trị đặt cọc:</span>
+                <span>Deposit Value:</span>
                 {formatCurrency(
                   convertWeiToVND(props.transaction.depositPrice)
                 )}{" "}
                 VNĐ
               </li>
               <li>
-                <span>Giá trị giao dịch:</span>
+                <span>Transaction Value:</span>
                 {formatCurrency(
                   convertWeiToVND(props.transaction.transferPrice)
                 )}{" "}
@@ -90,14 +90,14 @@ function TransactionInfo(props) {
             </ul>
           </div>
           <div className="agent-details col-6">
-            <h5>Thời gian giao dịch</h5>
+            <h5>Transaction Time</h5>
             <ul className="address-list">
               <li>
-                <span>Ngày bắt đầu:</span>
+                <span>Start Date:</span>
                 {formatDate(props.transaction.timeStart)}
               </li>
               <li>
-                <span>Ngày kết thúc:</span>
+                <span>End Date:</span>
                 {formatDate(props.transaction.timeEnd)}
               </li>
             </ul>
@@ -105,15 +105,15 @@ function TransactionInfo(props) {
 
           <hr />
           <div className="agent-details col-6">
-            <h5>Bên chuyển nhượng</h5>
+            <h5>Transferring Party</h5>
             {sellers.map((item, index) => (
               <ul className="address-list" key={index}>
                 <li>
-                  <span>Họ tên:</span>
+                  <span>Full Name:</span>
                   {item.fullName}
                 </li>
                 <li>
-                  <span>Số CMND:</span>
+                  <span>NIDA:</span>
                   {item.idNumber}
                 </li>
                 <li>
@@ -124,15 +124,15 @@ function TransactionInfo(props) {
             ))}
           </div>
           <div className="agent-details col-6">
-            <h5>Bên nhận chuyển nhượng</h5>
+            <h5>Transferee</h5>
             {buyers.map((item, index) => (
               <ul className="address-list" key={index}>
                 <li>
-                  <span>Họ tên:</span>
+                  <span>FullName:</span>
                   {item.fullName}
                 </li>
                 <li>
-                  <span>Số CMND:</span>
+                  <span>NIDA:</span>
                   {item.idNumber}
                 </li>
                 <li>

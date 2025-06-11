@@ -34251,12 +34251,12 @@
         }
       },
       "links": {},
-      "address": "0xEAB579f15075EB02c257B98537b1548F90cDF630",
-      "transactionHash": "0xddf3df0297c438e1a943a90581ff881464d247df5569e2446abdba3d4093249f"
+      "address": "0x8075e4bc3164faA0aa685bA1De2A844a110e1247",
+      "transactionHash": "0x82953322f254d4e1f142d4701ca179f389fbbc3de9418708205e926fcde378cd"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-04-08T06:46:49.348Z",
+  "updatedAt": "2025-04-14T18:45:24.646Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "Contract manager transaction of real estate",

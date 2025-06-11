@@ -13609,12 +13609,12 @@
         }
       },
       "links": {},
-      "address": "0x9EaD931DE72c4C6c9fc01725196db82CB082387E",
-      "transactionHash": "0xc75a2ce3ddb2f32c4f5bf9a05218b0d74b065572852b8597d388e5c1288ca28f"
+      "address": "0x4877D5d4a0B559128c92DBD884D34e7f73fcd8Fa",
+      "transactionHash": "0xe30c72d6706e8a1c7e9891ed7d327f7a98a60233c09c098621ff5f148b7380d0"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-04-08T06:46:49.286Z",
+  "updatedAt": "2025-04-14T18:45:24.595Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "Contract managing addressed role based access control",

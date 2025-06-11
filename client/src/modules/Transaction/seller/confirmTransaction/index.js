@@ -71,41 +71,41 @@ const ConfirmTransaction = (props) => {
     <div className="card">
       <div className="card-body">
         <div className="agent-details">
-          <h5>Xác nhận giao dịch</h5>
+          <h5>Confirm Transaction</h5>
           <ul className="address-list">
             <li>
-              <span>Giá trị giao dịch:</span>
+              <span>Transaction Value:</span>
               {formatCurrency(
                 convertWeiToVND(props.transaction.transferPrice)
               )}{" "}
-              VNĐ
+              TZS
             </li>
             <li>
-              <span>Số tiền đã đặt cọc:</span>
+              <span>Deposit Amount:</span>
               {formatCurrency(
                 convertWeiToVND(props.transaction.depositPrice)
               )}{" "}
-              VNĐ
+              TZS
             </li>
             <li>
-              <span>Số tiền còn lại:</span>
+              <span>Remaining Amount:</span>
               {formatCurrency(
                 convertWeiToVND(
                   props.transaction.transferPrice -
                     props.transaction.depositPrice
                 )
               )}{" "}
-              VNĐ
+              TZS
             </li>
             <li>
-              <span>Thuế thu nhập cá nhân:</span>
+              <span>Personal Income Tax:</span>
               {formatCurrency(
                 convertWeiToVND(props.transaction.transferPrice * 0.02)
               )}{" "}
-              VNĐ
+              TZS
             </li>
             <li>
-              <span>Số tiền nhận được:</span>
+              <span>Amount Received:</span>
               {formatCurrency(
                 convertWeiToVND(
                   props.transaction.transferPrice -
@@ -113,14 +113,13 @@ const ConfirmTransaction = (props) => {
                     props.transaction.transferPrice * 0.02
                 )
               )}{" "}
-              VNĐ
+              TZS
             </li>
           </ul>
-          <h6>Lưu ý</h6>
+          <h6>Note</h6>
           <ul className="address-list">
             <li>
-              Việc đồng ý xác nhận giao dịch này đồng nghĩa bạn phải thực hiện
-              đúng các yêu cầu của điều khoản của hợp đồng!
+              By agreeing to confirm this transaction, you must comply with the requirements of the terms of the contract!
             </li>
           </ul>
         </div>
@@ -129,7 +128,7 @@ const ConfirmTransaction = (props) => {
             className="btn v3 float-right mt-5 "
             onClick={handleClickOpen}
           >
-            <i className="ion-android-cancel"></i> Xác nhận giao dịch
+            <i className="ion-android-"></i> Confirm Transaction
           </button>
         )}
       </div>
@@ -140,53 +139,44 @@ const ConfirmTransaction = (props) => {
         open={open}
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Xác nhận giao dịch
+          Confirm Transaction
         </DialogTitle>
         <DialogContent dividers>
           <div className="agent-details">
-            <h5>Nghĩa vụ bên bán</h5>
+            <h5>Muuzaji</h5>
             <ol className="address-list">
               <li>
-                a) Chuyển giao đất, tài sản gắn liền với đất cho bên B đủ diện
-                tích, đúng hạng đất, loại đất, vị trí, số hiệu, tình trạng đất
-                và tài sản gắn liền với đất như đã thoả thuận;
+                a) ;
               </li>
               <li>
-                b) Giao giấy tờ có liên quan đến quyền sử dụng đất, quyền sở hữu
-                tài sản gắn liền với đất cho bên B.
+                b) 
               </li>
             </ol>
           </div>
           <div className="agent-details">
-            <h5>Cam đoan của bên bán</h5>
+            <h5>Seller's Guarantee</h5>
             <ol className="address-list">
               <li>
-                a) Những thông tin về nhân thân, về thửa đất và tài sản gắn liền
-                với đất đã ghi trong Hợp đồng này là đúng sự thật;
+                a) ;
               </li>
               <li>
-                b) Thửa đất thuộc trường hợp được chuyển nhượng quyền sử dụng
-                đất theo quy định của pháp luật;
+                b) ;
               </li>
               <li>
-                c) Tại thời điểm giao kết Hợp đồng này: Thửa đất và tài sản gắn
-                liền với đất không có tranh chấp, Quyền sử dụng đất và các tài
-                sản gắn liền với đất không bị kê biên để bảo đảm thi hành án;
+                c) ;
               </li>
               <li>
-                d) Việc giao kết Hợp đồng này hoàn toàn tự nguyện, không bị lừa
-                dối, không bị ép buộc;
+                d) ;
               </li>
               <li>
-                e) Thực hiện đúng và đầy đủ các thoả thuận đã ghi trong Hợp đồng
-                này.
+                e) 
               </li>
             </ol>
           </div>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose} color="primary">
-            Hủy
+            Cancel
           </Button>
           <Button
             onClick={() => {
@@ -195,7 +185,7 @@ const ConfirmTransaction = (props) => {
             }}
             color="primary"
           >
-            Xác nhận
+            Confirm
           </Button>
         </DialogActions>
       </Dialog>

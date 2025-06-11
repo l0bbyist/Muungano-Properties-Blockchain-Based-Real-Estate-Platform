@@ -163,7 +163,7 @@ const CustomizedExpansionPanels = (props) => {
           aria-controls="panel2d-content"
           id="panel2d-header"
         >
-          <Typography>Chấp nhận giao dịch (Kí hợp đồng đặt cọc)</Typography>
+          <Typography>Kubali/Sign the deposit contract</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           {expanded === "panel2" &&
@@ -185,7 +185,7 @@ const CustomizedExpansionPanels = (props) => {
           aria-controls="panel3d-content"
           id="panel3d-header"
         >
-          <Typography>Chuyển tiền còn lại</Typography>
+          <Typography>Complete Transfer</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           {expanded === "panel3" &&
@@ -207,7 +207,7 @@ const CustomizedExpansionPanels = (props) => {
           aria-controls="panel4d-content"
           id="panel4d-header"
         >
-          <Typography>Kí hợp đồng chuyển nhượng</Typography>
+          <Typography>Sign the transfer contract</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           {expanded === "panel4" &&
@@ -229,7 +229,7 @@ const CustomizedExpansionPanels = (props) => {
           aria-controls="panel5d-content"
           id="panel5d-header"
         >
-          <Typography>Đăng hợp đồng chuyển nhượng</Typography>
+          <Typography>Submit transfer contract</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <DepositConfirm />
@@ -244,7 +244,7 @@ const CustomizedExpansionPanels = (props) => {
           aria-controls="panel6d-content"
           id="panel6d-header"
         >
-          <Typography>Kê khai thuế</Typography>
+          <Typography>Tax declaration</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <PaymentConfirm />
@@ -259,7 +259,7 @@ const CustomizedExpansionPanels = (props) => {
           aria-controls="panel7d-content"
           id="panel7d-header"
         >
-          <Typography>Đóng thuế nhà nước</Typography>
+          <Typography>Pay state taxes</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <PayTaxes />
@@ -274,7 +274,7 @@ const CustomizedExpansionPanels = (props) => {
           aria-controls="panel8d-content"
           id="panel8d-header"
         >
-          <Typography>Xác nhận đóng thuế</Typography>
+          <Typography>Confirmation of tax payment</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <TaxesConfirm />
@@ -290,7 +290,7 @@ const CustomizedExpansionPanels = (props) => {
           aria-controls="panel9d-content"
           id="panel9d-header"
         >
-          <Typography>Kết thúc</Typography>
+          <Typography>End</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Finished />
@@ -308,7 +308,7 @@ const CustomizedExpansionPanels = (props) => {
             props.cancelTransaction(props.transaction, props.user.publicAddress)
           } // get sender
         >
-          <i className="ion-android-cancel"></i> Hủy bỏ giao dịch
+          <i className="ion-android-cancel"></i> Cancel transaction
         </button>
       )}
     </div>

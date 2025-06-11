@@ -70,30 +70,30 @@ function TransactionDetail(props) {
 
     const data = {
       DEPOSIT_REQUEST: {
-        // title: `${buyers[0] && buyers[0].fullName} đặt cọc`,
-        title: `Yêu cầu đặt cọc`,
+        // title: `${buyers[0] && buyers[0].fullName} deposit`,
+        title: `Deposit Required`,
         time: formatDate(transaction.createdAt),
         description: `${
           buyers[0] && buyers[0].fullName
-        } gửi yêu cầu đặt cọc tới ${
+        } sent deposit request to ${
           sellers[0] && sellers[0].fullName
-        } giá trị ${formatCurrency(
+        } value ${formatCurrency(
           convertWeiToVND(transaction.depositPrice)
-        )} VNĐ`,
+        )} TZS`,
         explorer: transaction.transactionHash,
       },
 
       DEPOSIT_CANCELED_BY_BUYER: {
-        // title: `${buyers[0] && buyers[0].fullName} hủy đặt cọc`,
-        title: `Giao dịch thất bại`,
+        // title: `${buyers[0] && buyers[0].fullName} Cancel deposit`,
+        title: `Transaction Halted`,
         time:
           transaction.transactionCanceled &&
           formatDate(transaction.transactionCanceled.time),
         description: `${
           buyers[0] && buyers[0].fullName
-        } hủy yêu cầu đặt cọc và nhận lại tiền đặt cọc ${formatCurrency(
+        } cancelled deposit request and got deposit back ${formatCurrency(
           convertWeiToVND(transaction.depositPrice)
-        )} VNĐ`,
+        )} TZS`,
         explorer:
           transaction.transactionCanceled &&
           transaction.transactionCanceled.txHash,
@@ -101,17 +101,17 @@ function TransactionDetail(props) {
 
       DEPOSIT_CANCELED_BY_SELLER: {
         // title: `${sellers[0] && sellers[0].fullName} từ chối giao dịch`,
-        title: `Giao dịch thất bại`,
+        title: `Transaction Halted`,
         time:
           transaction.transactionCanceled &&
           formatDate(transaction.transactionCanceled.time),
         description: `${
           sellers[0] && sellers[0].fullName
-        } từ chối giao dịch và ${
+        } refused the transaction and ${
           buyers[0] && buyers[0].fullName
-        } nhận lại ${formatCurrency(
+        } received back ${formatCurrency(
           convertWeiToVND(transaction.depositPrice)
-        )} VNĐ tiền đặt cọc `,
+        )} TZS deposit `,
         explorer:
           transaction.transactionCanceled &&
           transaction.transactionCanceled.txHash,
@@ -121,34 +121,34 @@ function TransactionDetail(props) {
         // title: `${
         //   sellers[0] && sellers[0].fullName
         // } chấp nhận giao dịch và nhận đặt cọc`,
-        title: `Chấp nhận giao dịch`,
+        title: `Accept Transactions`,
         time:
           transaction.depositConfirmed &&
           formatDate(transaction.depositConfirmed.time),
         description: `${
           sellers[0] && sellers[0].fullName
-        } chấp nhận giao dịch với ${
+        } accepted transactions with ${
           buyers[0] && buyers[0].fullName
-        } và nhận ${formatCurrency(
+        } and received ${formatCurrency(
           convertWeiToVND(transaction.depositPrice)
-        )} VNĐ tiền đặt cọc`,
+        )} TZS deposit`,
         explorer:
           transaction.depositConfirmed && transaction.depositConfirmed.txHash,
       },
 
       DEPOSIT_BROKEN_BY_SELLER: {
         // title: `${sellers[0] && sellers[0].fullName} hủy giao dịch`,
-        title: `Giao dịch thất bại`,
+        title: `Transaction Failed`,
         time:
           transaction.transactionCanceled &&
           formatDate(transaction.transactionCanceled.time),
         description: `${
           sellers[0] && sellers[0].fullName
-        } hủy giao dịch và đền bù hợp đồng cho ${
+        } Cancellation of transaction and compensation for contract ${
           buyers[0] && buyers[0].fullName
-        } giá trị ${formatCurrency(
+        } value ${formatCurrency(
           convertWeiToVND(transaction.depositPrice * 2)
-        )} VNĐ`,
+        )} TZS`,
         explorer:
           transaction.transactionCanceled &&
           transaction.transactionCanceled.txHash,
@@ -156,13 +156,13 @@ function TransactionDetail(props) {
 
       DEPOSIT_BROKEN_BY_BUYER: {
         // title: `${buyers[0] && buyers[0].fullName} hủy giao dịch`,
-        title: `Giao dịch thất bại`,
+        title: `Transaction Failed`,
         time:
           transaction.transactionCanceled &&
           formatDate(transaction.transactionCanceled.time),
         description: `${
           buyers[0] && buyers[0].fullName
-        } hủy giao dịch và mất tiền đặt cọc`,
+        } Cancelled transaction and lost deposit`,
         explorer:
           transaction.transactionCanceled &&
           transaction.transactionCanceled.txHash,
@@ -170,33 +170,33 @@ function TransactionDetail(props) {
 
       PAYMENT_REQUEST: {
         // title: `${buyers[0] && buyers[0].fullName} thanh toán số tiền còn lại`,
-        title: `Thanh toán`,
+        title: `Payment`,
         time: transaction.payment && formatDate(transaction.payment.time),
         description: `${
           buyers[0] && buyers[0].fullName
-        } thanh toán số tiền còn lại: ${formatCurrency(
+        } paid the remaining amount: ${formatCurrency(
           convertWeiToVND(transaction.transferPrice - transaction.depositPrice)
-        )}VNĐ cho ${
+        )} TZS to ${
           sellers[0] && sellers[0].fullName
-        } và + thuế ${formatCurrency(
+        } plus tax ${formatCurrency(
           convertWeiToVND(transaction.transferPrice * 0.005)
-        )}VNĐ cho nhà nước`,
+        )} TZS`,
         explorer: transaction.payment && transaction.payment.txHash,
       },
 
       TRANSFER_CANCELED_BY_BUYER: {
         // title: `${buyers[0] && buyers[0].fullName} hủy giao dịch`,
-        title: `Giao dịch thất bại`,
+        title: `Transaction Failed`,
         time:
           transaction.transactionCanceled &&
           formatDate(transaction.transactionCanceled.time),
         description: `${
           buyers[0] && buyers[0].fullName
-        } hủy giao dịch nhận lại số tiền thanh toán còn lại ${formatCurrency(
+        } Cancelled transaction and got back amt paid prior ${formatCurrency(
           convertWeiToVND(transaction.transferPrice - transaction.depositPrice)
-        )} VNĐ + thuế ${formatCurrency(
+        )} TZS + tax ${formatCurrency(
           convertWeiToVND(transaction.transferPrice * 0.005)
-        )} VNĐ và mất tiền đặt cọc`,
+        )} TZS and lost deposit`,
         explorer:
           transaction.transactionCanceled &&
           transaction.transactionCanceled.txHash,
@@ -205,34 +205,34 @@ function TransactionDetail(props) {
       },
       TRANSFER_CANCELED_BY_SELLER: {
         // title: `${sellers[0] && sellers[0].fullName} hủy giao dịch`,
-        title: `Giao dịch thất bại`,
+        title: `Transaction Failed`,
         time:
           transaction.transactionCanceled &&
           formatDate(transaction.transactionCanceled.time),
         description: `${
           sellers[0] && sellers[0].fullName
-        } hủy giao dịch và đền bù hợp đồng ${formatCurrency(
+        } Cancellation of transaction and contract compensation ${formatCurrency(
           convertWeiToVND(transaction.depositPrice * 2)
-        )}VNĐ cho ${buyers[0] && buyers[0].fullName}.  ${
+        )} TZS to ${buyers[0] && buyers[0].fullName}.  ${
           buyers[0] && buyers[0].fullName
-        } nhân lại số tiền đã thanh toán và tiền đền bù hợp đồng.`,
+        } multiply the amount paid and the contract compensation.`,
         explorer:
           transaction.transactionCanceled &&
           transaction.transactionCanceled.txHash,
       },
       PAYMENT_CONFIRMED: {
         // title: `${sellers[0] && sellers[0].fullName} chấp nhận thanh toán`,
-        title: `Xác nhận giao dịch`,
+        title: `Confirm Transaction`,
         time:
           transaction.paymentConfirmed &&
           formatDate(transaction.paymentConfirmed.time),
         description: `${
           sellers[0] && sellers[0].fullName
-        } nhận số tiền còn lại: ${formatCurrency(
+        } received the remaining amount: ${formatCurrency(
           convertWeiToVND(transaction.transferPrice - transaction.depositPrice)
-        )}VNĐ - thuế ${formatCurrency(
+        )} TZS - tax ${formatCurrency(
           convertWeiToVND(transaction.transferPrice * 0.002)
-        )}VNĐ. ${buyers[0] && buyers[0].fullName} nhận quyền sỡ hữu tài sản`,
+        )} TZS. ${buyers[0] && buyers[0].fullName} took ownership of property`,
         explorer:
           transaction.paymentConfirmed && transaction.paymentConfirmed.txHash,
       },
@@ -281,7 +281,7 @@ function TransactionDetail(props) {
                   target="_blank"
                   href={`${process.env.REACT_APP_EXPLORER}/tx/${data[item].explorer}`}
                 >
-                  Kiểm tra giao dịch trên Blockchain
+                  Check Transactions on Blockchain
                 </a>
               </div>
             </div>
@@ -297,39 +297,39 @@ function TransactionDetail(props) {
         <div className="card-body">
           <div className="row">
             <div className="agent-details col-6">
-              <h5>Tài sản giao dịch</h5>
+              <h5>Asset (s)</h5>
               <ul className="address-list">
                 <li>
-                  <span>Địa điểm:</span>
+                  <span>Location:</span>
                   {property &&
                     property.properties &&
                     property.properties.landLot.address}
                 </li>
                 <li>
-                  <span>Giá trị đặt cọc:</span>
+                  <span>Deposit Value:</span>
                   {formatCurrency(
                     convertWeiToVND(transaction.depositPrice)
                   )}{" "}
-                  VNĐ
+                  TZS
                 </li>
                 <li>
-                  <span>Giá trị giao dịch:</span>
+                  <span>Transaction Value:</span>
                   {formatCurrency(
                     convertWeiToVND(transaction.transferPrice)
                   )}{" "}
-                  VNĐ
+                  TZS
                 </li>
               </ul>
             </div>
             <div className="agent-details col-6">
-              <h5>Thời gian giao dịch</h5>
+              <h5>Transaction Time</h5>
               <ul className="address-list">
                 <li>
-                  <span>Ngày bắt đầu:</span>
+                  <span>Start Date:</span>
                   {formatDate(transaction.timeStart)}
                 </li>
                 <li>
-                  <span>Ngày kết thúc:</span>
+                  <span>End Date:</span>
                   {formatDate(transaction.timeEnd)}
                 </li>
               </ul>
@@ -337,15 +337,15 @@ function TransactionDetail(props) {
 
             <hr />
             <div className="agent-details col-6">
-              <h5>Bên chuyển nhượng</h5>
+              <h5>Transferring Party</h5>
               {sellers.map((item, index) => (
                 <ul className="address-list" key={index}>
                   <li>
-                    <span>Họ tên:</span>
+                    <span>Full Name:</span>
                     {item.fullName}
                   </li>
                   <li>
-                    <span>Số CMND:</span>
+                    <span>NIDA ID:</span>
                     {item.idNumber}
                   </li>
                   <li>
@@ -356,15 +356,15 @@ function TransactionDetail(props) {
               ))}
             </div>
             <div className="agent-details col-6">
-              <h5>Bên nhận chuyển nhượng</h5>
+              <h5>Transferee</h5>
               {buyers.map((item, index) => (
                 <ul className="address-list" key={index}>
                   <li>
-                    <span>Họ tên:</span>
+                    <span>Full Name:</span>
                     {item.fullName}
                   </li>
                   <li>
-                    <span>Số CMND:</span>
+                    <span>NIDA ID:</span>
                     {item.idNumber}
                   </li>
                   <li>
@@ -380,7 +380,7 @@ function TransactionDetail(props) {
 
       <div class="container py-2">
         <h3 class="font-weight-light text-center text-muted py-3">
-          Lịch sử giao dịch
+          Transaction History
         </h3>
         {renderTimeline(transaction)}
       </div>

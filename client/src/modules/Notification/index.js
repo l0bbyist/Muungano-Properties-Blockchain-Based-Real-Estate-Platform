@@ -87,7 +87,7 @@ class Notification extends Component {
               )}
               {this.state.data.length > 10 && (
                 <div className="au-message__footer">
-                  <button className="btn v1">View more</button>
+                  <button className="btn v1">View More</button>
                 </div>
               )}
             </div>

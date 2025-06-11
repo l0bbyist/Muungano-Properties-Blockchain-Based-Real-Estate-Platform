@@ -14,38 +14,38 @@ const ConfirmTransaction = (props) => {
             width="150"
             className="my-50"
           />
-          <h5 className="mb-5">Bạn đã thanh toán thành công</h5>
+          <h5 className="mb-5">Your payment has been successful!</h5>
           {props.transaction.state == "PAYMENT_REQUEST" && (
-            <p> Vui lòng chờ người bán xác nhận thanh toán!</p>
+            <p> Please wait for seller to confirm payment!</p>
           )}
           <hr />
 
-          <h5 className="mb-5">Chi tiết thanh toán</h5>
+          <h5 className="mb-5">Payment Details</h5>
           <div className="col-6 offset-sm-3">
             <ul className="address-list">
               <li>
-                <span>Số tiền đã đặt cọc:</span>
+                <span>Deposit Amount:</span>
                 {formatCurrency(
                   convertWeiToVND(props.transaction.depositPrice)
                 )}
-                VND
+                TZS
               </li>
               <li>
-                <span>Sô tiền thanh toán:</span>
+                <span>Payment amount:</span>
                 {formatCurrency(
                   convertWeiToVND(
                     props.transaction.transferPrice -
                       props.transaction.depositPrice
                   )
                 )}
-                VND
+                TZS
               </li>
               <li>
-                <span>Thuế thu nhập cá nhân:</span>
+                <span>Personal income tax:</span>
                 {formatCurrency(
                   convertWeiToVND(props.transaction.transferPrice * 0.005)
                 )}
-                VND
+                TZS
               </li>
             </ul>
           </div>

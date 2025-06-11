@@ -33,7 +33,7 @@ const initialState = {
 function createReducer(state = initialState, action) {
   switch (action.type) {
     case FILLING_FORM:
-      state.messages = "Yêu cầu nhập thông tin";
+      state.messages = "Information Required";
       if (
         action.data.hasOwnProperty("owners") &&
         action.data.owners.hasOwnProperty("values")
@@ -83,7 +83,7 @@ function createReducer(state = initialState, action) {
     }
     case CREATE_SUCCESS:
       toast.update(action.payload.txHash, {
-        render: <ToastSuccess message={"Tạo tài sản thành công!"} />,
+        render: <ToastSuccess message={"Asset Tokenization Imekamilika!"} />,
         type: toast.TYPE.SUCCESS,
         autoClose: 5000,
         onClick: () => {
@@ -98,7 +98,7 @@ function createReducer(state = initialState, action) {
         loading: false,
       };
     case CREATE_CERT_WAIT_BLOCKCHAIN_CONFIRM:
-      toast(<ToastLoading message={"Đang tạo tài sản..."} />, {
+      toast(<ToastLoading message={"Tokenizing Asset..."} />, {
         toastId: action.payload,
         autoClose: false,
         position: toast.POSITION.BOTTOM_RIGHT,

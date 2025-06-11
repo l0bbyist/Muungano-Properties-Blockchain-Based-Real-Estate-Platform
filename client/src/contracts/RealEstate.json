@@ -13661,12 +13661,12 @@
         }
       },
       "links": {},
-      "address": "0x87fa54940C0B3134b7e65D601A5aF734e875f2f8",
-      "transactionHash": "0xf179eacc01c7276367503b6fca6b2b6c219f2cd72d2ce1346f0723e3f1343898"
+      "address": "0x9e7B9C4757C2ec2b87559D15e88a4a1a15fa8882",
+      "transactionHash": "0x7f749d380cf26e7cffd3ceca3d84608bf8beb55c35d6780d0095029657a44e05"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-04-08T06:46:49.307Z",
+  "updatedAt": "2025-04-14T18:45:24.612Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "Real estate management and transaction",

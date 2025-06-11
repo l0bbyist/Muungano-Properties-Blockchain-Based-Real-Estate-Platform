@@ -71,11 +71,11 @@ const AcceptTransaction = (props) => {
 
   return (
     <div>
-      <h4 className="">Tổng quan</h4>
+      <h4 className="">Overview</h4>
       <TransactionInfo />
       {props.transaction.state == "DEPOSIT_REQUEST" && !props.checkExpired && (
         <button className="btn v3 float-right mt-5 " onClick={handleClickOpen}>
-          <i className="ion-android-cancel"></i> Chấp nhận giao dịch
+          <i className="ion-android-"></i> Kubali
         </button>
       )}
       <Dialog
@@ -84,35 +84,33 @@ const AcceptTransaction = (props) => {
         open={open}
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Chấp nhận giao dịch
+          Kubali
         </DialogTitle>
         <DialogContent dividers>
           <div className="agent-details">
-            <h5>Giá trị đặt cọc</h5>
+            <h5>Deposit Value</h5>
             <ul className="address-list">
               <li>
-                <span>Số tiền nhận:</span>
+                <span>Amount Received:</span>
                 {formatCurrency(
                   convertWeiToVND(props.transaction.depositPrice)
                 )}{" "}
-                VNĐ
+                TZS
               </li>
             </ul>
           </div>
           <div className="agent-details">
-            <h5>Lưu ý:</h5>
+            <h5>Note:</h5>
             <ul className="address-list">
               <li>
-                Với việc xác nhận này bạn sẽ nhận được tiền đặt cọc, và tài sản
-                sẽ được chuyển nhượng nếu người mua thanh toán đủ số tiền giao
-                dịch.
+                With this confirmation you will receive the deposit, and the property will be transferred if the buyer pays the full transaction amount.
               </li>
             </ul>
           </div>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose} color="primary">
-            Hủy
+            Cancel
           </Button>
           <Button
             onClick={() => {
@@ -121,7 +119,7 @@ const AcceptTransaction = (props) => {
             }}
             color="primary"
           >
-            Xác nhận
+            Confirm
           </Button>
         </DialogActions>
       </Dialog>

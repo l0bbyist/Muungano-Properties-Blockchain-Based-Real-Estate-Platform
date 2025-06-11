@@ -13,7 +13,7 @@ const Steps = () => {
 
   return (
     <div className="container py-2">
-      <h4 className="">Transaction process</h4>
+      <h4 className="">Transaction Process</h4>
       {/* timeline item 1 */}
       <div className="row" style={{ cursor: "pointer" }}>
         {/* timeline item 1 left dot */}

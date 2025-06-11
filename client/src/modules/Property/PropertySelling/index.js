@@ -46,7 +46,7 @@ function PropertySelling({ properties, cancelSale }) {
                 <p>{property.properties.landLot.address}</p>
               </div>
               <div className="trend-open mt-10">
-                <p> {formatCurrency(property.moreInfo.price)} VND </p>
+                <p> {formatCurrency(property.moreInfo.price)} TZS </p>
               </div>
               <ul className="property-feature">
                 <li>

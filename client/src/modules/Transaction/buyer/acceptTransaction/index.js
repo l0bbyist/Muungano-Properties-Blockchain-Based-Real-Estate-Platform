@@ -14,21 +14,21 @@ const AcceptTransaction = (props) => {
             width="100"
             className="my-50"
           />
-          <h5 className="mb-5">Bạn đã đặt cọc thành công</h5>
+          <h5 className="mb-5">Deposit Yako Imefanikiwa!</h5>
           {props.transaction.state == "DEPOSIT_REQUEST" && (
-            <p> Vui lòng chờ người bán chấp nhận giao dịch!</p>
+            <p> Please wait for seller to accept transaction!</p>
           )}
           <hr />
 
-          <h5 className="mb-5">Chi tiết đặt cọc</h5>
+          <h5 className="mb-5">Deposit Details</h5>
           <div className="col-6 offset-sm-3">
             <ul className="address-list">
               <li>
-                <span>Ngày đặt cọc:</span>
+                <span>Deposit Date:</span>
                 {formatDate(props.transaction.createdAt)}
               </li>
               <li>
-                <span>Sô tiền đã đặt cọc:</span>
+                <span>Deposit Amount:</span>
                 {formatCurrency(
                   convertWeiToVND(props.transaction.depositPrice)
                 )}

@@ -165,7 +165,7 @@ function Init(props) {
         <div className="col-md-8">
           <div className="row">
             <div className="col-md-6 col-sm-12">
-              <h6>Tài sản</h6>
+              <h6>Asset</h6>
               <div className="single-property-box">
                 {/* <div className="property-item">
                   <Link
@@ -212,7 +212,7 @@ function Init(props) {
                     <li>
                       {" "}
                       <i className="fas fa-car"></i>
-                      <span>{saleItem.moreInfo.utilities.length} tiện ích</span>
+                      <span>{saleItem.moreInfo.utilities.length} Utilities</span>
                     </li>
                   </ul>
                 </div>
@@ -220,7 +220,7 @@ function Init(props) {
             </div>
             <div className="col-md-6 col-sm-12">
               <div className="form-group">
-                <h6>Số tiền đặt cọc</h6>
+                <h6>Deposit Amount</h6>
                 <div className="row">
                   <div className="input-group">
                     <input
@@ -228,7 +228,7 @@ function Init(props) {
                       component="input"
                       type="text"
                       className="form-control filter-input"
-                      placeholder="Số tiền đặt cọc"
+                      placeholder=" "
                       value={depositPrice}
                       onChange={(e) => {
                         setDepositPrice(formatCurrency(e.target.value));
@@ -241,7 +241,7 @@ function Init(props) {
                 </div>
               </div>
               <div className="form-group">
-                <h6>Giá mua</h6>
+                <h6>Price</h6>
                 <div className="row">
                   <div className="input-group">
                     <input
@@ -249,20 +249,20 @@ function Init(props) {
                       component="input"
                       type="text"
                       className="form-control filter-input"
-                      placeholder="purchase price"
+                      placeholder=" "
                       value={transferPrice}
                       onChange={(e) => {
                         setTransferPrice(formatCurrency(e.target.value));
                       }}
                     />
                     <div className="input-group-append">
-                      <span className="input-group-text"> VND </span>
+                      <span className="input-group-text"> TZS </span>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="form-group">
-                <h6>Thời gian đặt cọc</h6>
+                <h6>Deposit Lifetime</h6>
                 <div className="row">
                   <div className="input-group">
                     <input
@@ -277,7 +277,7 @@ function Init(props) {
                       }}
                     />
                     <div className="input-group-append">
-                      <span className="input-group-text"> Day</span>
+                      <span className="input-group-text"> Day (s)</span>
                     </div>
                   </div>
                 </div>
@@ -331,7 +331,7 @@ function Init(props) {
             className="btn v3"
             onClick={handleClickOpen}
           >
-            Submit deposit request
+            Submit Deposit Request
           </button>
 
           <Dialog
@@ -340,20 +340,20 @@ function Init(props) {
             open={open}
           >
             <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-             Confirm deposit request submission
+             Confirm Deposit Request Submission
             </DialogTitle>
             <DialogContent dividers>
               <ul className="address-list">
                 <li>
-                  <span>Transaction value:</span>
-                  {transferPrice} VNĐ
+                  <span>Transaction Value:</span>
+                  {transferPrice} TZS
                 </li>
                 <li>
-                  <span>Amount required for deposit:</span>
-                  {depositPrice} VNĐ
+                  <span>Deposit Amt Required:</span>
+                  {depositPrice} TZS
                 </li>
                 <li>
-                  <span>Deposit time:</span>
+                  <span>Deposit Lifetime:</span>
                   {depositTime} Day
                 </li>
               </ul>

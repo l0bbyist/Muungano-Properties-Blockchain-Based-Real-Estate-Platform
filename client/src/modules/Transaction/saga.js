@@ -308,7 +308,7 @@ const cancelTransaction = (
         });
     });
   } else {
-    throw new Error("User doesn't permission!");
+    throw new Error("User doesn't have permission!");
   }
 };
 

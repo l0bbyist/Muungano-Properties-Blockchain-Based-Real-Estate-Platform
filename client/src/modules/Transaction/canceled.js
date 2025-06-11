@@ -12,11 +12,11 @@ const Canceled = (props) => {
             width="150"
             className="my-50"
           />
-          <h5 className="mb-5">Giao dịch đã hủy</h5>
+          <h5 className="mb-5">Transaction canceled</h5>
           <div className="col-6 offset-sm-3">
             <ul className="address-list">
               <li>
-                <span>Ngày hủy giao dịch:</span>
+                <span>Transaction cancellation date:</span>
                 {formatDate(props.transaction.updatedAt)}
               </li>
             </ul>

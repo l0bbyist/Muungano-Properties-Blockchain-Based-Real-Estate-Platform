@@ -62,7 +62,7 @@ export default function transactionReducers(state = initialState, action) {
     case CANCEL_TRANSACTION_REQUEST:
       return { ...state, loading: true };
     case CANCEL_TRANSACTION_WAIT_BLOCKCHAIN_CONFIRM:
-      toast(<ToastLoading message={"Đang hủy bỏ giao dịch..."} />, {
+      toast(<ToastLoading message={"Cancelling Transaction..."} />, {
         toastId: action.payload,
         autoClose: false,
         position: toast.POSITION.BOTTOM_RIGHT,
@@ -70,7 +70,7 @@ export default function transactionReducers(state = initialState, action) {
       return { ...state, loading: true };
     case CANCEL_TRANSACTION_SUCCESS:
       toast.update(action.payload, {
-        render: <ToastSuccess message={"Hủy bỏ giao dịch thành công"} />,
+        render: <ToastSuccess message={"Transaction Cancelled"} />,
         type: toast.TYPE.SUCCESS,
         autoClose: 5000,
         onClick: () => {
@@ -82,7 +82,7 @@ export default function transactionReducers(state = initialState, action) {
     case ACCEPT_TRANSACTION_REQUEST:
       return { ...state, loading: true };
     case ACCEPT_TRANSACTION_WAIT_BLOCKCHAIN_CONFIRM:
-      toast(<ToastLoading message={"Đang xác nhận giao dịch..."} />, {
+      toast(<ToastLoading message={"Confirming transaction..."} />, {
         toastId: action.payload,
         autoClose: false,
         position: toast.POSITION.BOTTOM_RIGHT,
@@ -90,7 +90,7 @@ export default function transactionReducers(state = initialState, action) {
       return { ...state, loading: true };
     case ACCEPT_TRANSACTION_SUCCESS:
       toast.update(action.payload, {
-        render: <ToastSuccess message={"Khởi tạo giao dịch thành công!"} />,
+        render: <ToastSuccess message={"Transaction initiated successfully!"} />,
         type: toast.TYPE.SUCCESS,
         autoClose: 5000,
         onClick: () => {
@@ -102,7 +102,7 @@ export default function transactionReducers(state = initialState, action) {
     case PAYMENT_REQUEST:
       return { ...state, loading: true };
     case PAYMENT_WAIT_BLOCKCHAIN_CONFIRM:
-      toast(<ToastLoading message={"Đang xác nhận giao dịch..."} />, {
+      toast(<ToastLoading message={"Confirming transaction..."} />, {
         toastId: action.payload,
         autoClose: false,
         position: toast.POSITION.BOTTOM_RIGHT,
@@ -110,7 +110,7 @@ export default function transactionReducers(state = initialState, action) {
       return { ...state, loading: true };
     case PAYMENT_SUCCESS:
       toast.update(action.payload, {
-        render: <ToastSuccess message={"Giao dịch thành công!"} />,
+        render: <ToastSuccess message={"Successful transaction!"} />,
         type: toast.TYPE.SUCCESS,
         autoClose: 5000,
         onClick: () => {
@@ -122,7 +122,7 @@ export default function transactionReducers(state = initialState, action) {
     case CONFIRM_TRANSACTION_REQUEST:
       return { ...state, loading: true };
     case CONFIRM_TRANSACTION_WAIT_BLOCKCHAIN_CONFIRM:
-      toast(<ToastLoading message={"Đang xác nhận giao dịch..."} />, {
+      toast(<ToastLoading message={"Confirming transaction..."} />, {
         toastId: action.payload,
         autoClose: false,
         position: toast.POSITION.BOTTOM_RIGHT,
@@ -130,7 +130,7 @@ export default function transactionReducers(state = initialState, action) {
       return { ...state, loading: true };
     case CONFIRM_TRANSACTION_SUCCESS:
       toast.update(action.payload, {
-        render: <ToastSuccess message={"Giao dịch thành công!"} />,
+        render: <ToastSuccess message={"Successful transaction!"} />,
         type: toast.TYPE.SUCCESS,
         autoClose: 5000,
         onClick: () => {
