@@ -78,14 +78,14 @@ function TransactionInfo(props) {
                 {formatCurrency(
                   convertWeiToVND(props.transaction.depositPrice)
                 )}{" "}
-                VNĐ
+                TZS
               </li>
               <li>
                 <span>Transaction Value:</span>
                 {formatCurrency(
                   convertWeiToVND(props.transaction.transferPrice)
                 )}{" "}
-                VNĐ
+                TZS
               </li>
             </ul>
           </div>

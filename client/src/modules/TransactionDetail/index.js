@@ -100,7 +100,7 @@ function TransactionDetail(props) {
       },
 
       DEPOSIT_CANCELED_BY_SELLER: {
-        // title: `${sellers[0] && sellers[0].fullName} từ chối giao dịch`,
+        // title: `${sellers[0] && sellers[0].fullName} Refused transaction`,
         title: `Transaction Halted`,
         time:
           transaction.transactionCanceled &&

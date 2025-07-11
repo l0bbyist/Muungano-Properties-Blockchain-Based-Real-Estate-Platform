@@ -39,7 +39,7 @@ export default class MyTransactons extends Component {
             <span
               style={{
                 backgroundColor: `$
-                  {rowData.transactionType === "Mua" ? "green" : "orange"}`,
+                  {rowData.transactionType === "buy" ? "green" : "orange"}`,
                 color: "white",
                 padding: "5px 10px",
                 width: "100px",
@@ -134,7 +134,7 @@ export default class MyTransactons extends Component {
         ).properties.landLot.address,
         transferPrice: `${formatCurrency(
           convertWeiToVND(transaction.transferPrice)
-        )} VND`,
+        )} TZS`,
         timeStart: formatDate(transaction.timeStart),
         transactionType: "Buy",
         state: transaction.state,
@@ -146,7 +146,7 @@ export default class MyTransactons extends Component {
         ).properties.landLot.address,
         transferPrice: `${formatCurrency(
           convertWeiToVND(transaction.transferPrice)
-        )} VND`,
+        )} TZS`,
         timeStart: formatDate(transaction.timeStart),
         transactionType: "Sell",
         state: transaction.state,

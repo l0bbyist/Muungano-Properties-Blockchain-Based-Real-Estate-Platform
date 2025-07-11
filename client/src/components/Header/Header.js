@@ -30,13 +30,13 @@ const menus = [
     name: "Buy/Sell",
     to: "/listings",
     exact: false,
-    role: "all",
+    role: "owner",
   },
   {
     name: "Lookup",
     to: "/investing",
     exact: false,
-    role: "all",
+    role: "owner",
   },
   {
     name: "Asset Tokenization",
@@ -45,7 +45,7 @@ const menus = [
     role: "Notary",
   },
   {
-    name: "User management",
+    name: "User Management",
     to: "/management-user",
     exact: false,
     role: "Notary",
@@ -277,7 +277,7 @@ class Menu extends Component {
                     onClick={this.changeToggleAuth}
                   >
                     <img
-                      src={`${process.env.REACT_APP_BASE_URL}/images/dashboard/agent_db_1.jpg`}
+                      src={`${process.env.REACT_APP_BASE_URL}/images/dashboard/eric.jpg`}
                       alt="..."
                     />
                     <span>
@@ -297,7 +297,11 @@ class Menu extends Component {
                           TZS
                         </a>
                       </div>
-                      <div className="account-dropdown__item">
+                      
+                      
+                      {user && user.role == "owner" ? (
+<div>
+                        <div className="account-dropdown__item">
                         <Link
                           to={"/user/profile"}
                           onClick={this.changeToggleAuth}
@@ -305,8 +309,7 @@ class Menu extends Component {
                           My Profile
                         </Link>
                       </div>
-                      {user && user.role == "owner" ? (
-                        <div>
+                        
                           <div className="account-dropdown__item">
                             <Link
                               to={"/my-properties"}

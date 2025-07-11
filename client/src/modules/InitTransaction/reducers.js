@@ -24,7 +24,7 @@ export default function initTransactionReducer(state = initialState, action) {
         loading: true,
       };
     case INIT_TRANSACTION_WAIT_BLOCKCHAIN_CONFIRM:
-      toast(<ToastLoading message={"Đang khởi tạo giao dịch..."} />, {
+      toast(<ToastLoading message={"Transaction Initiated Succesfully!..."} />, {
         toastId: action.payload,
         autoClose: false,
         position: toast.POSITION.BOTTOM_RIGHT,
@@ -32,7 +32,7 @@ export default function initTransactionReducer(state = initialState, action) {
       return { ...state, loading: true };
     case INIT_TRANSACTION_SUCCESS:
       toast.update(action.payload.txHash, {
-        render: <ToastSuccess message={"Khởi tạo giao dịch thành công!"} />,
+        render: <ToastSuccess message={"Transaction Succesful!"} />,
         type: toast.TYPE.SUCCESS,
         autoClose: 5000,
         onClick: () => {

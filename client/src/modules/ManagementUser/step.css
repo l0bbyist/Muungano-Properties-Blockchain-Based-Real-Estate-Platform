@@ -169,3 +169,21 @@
 .steps li:last-child div span:nth-child(5) {
   display: none;
 }
+
+.small-label {
+  font-size: 0.85em;
+  color: #666;
+  margin-bottom: 3px;
+  display: block;
+}
+
+.selected-residence {
+  margin-top: 5px;
+  padding: 5px;
+  background-color: #f8f9fa;
+  border-radius: 3px;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}

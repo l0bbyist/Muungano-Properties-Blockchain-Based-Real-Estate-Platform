@@ -80,11 +80,11 @@ class Listings extends Component {
               <p> {formatCurrency(item.moreInfo.price)} TZS</p>
             </div>
             <ul className="property-feature">
-              <li>
-                {" "}
+             {/* <li>
+               {" "}
                 <i className="fas fa-bed"></i>
                 <span>{item.moreInfo.numOfBedrooms} Bedrooms</span>
-              </li>
+             </li>
               <li>
                 {" "}
                 <i className="fas fa-bath"></i>
@@ -99,7 +99,7 @@ class Listings extends Component {
                 {" "}
                 <i className="fas fa-car"></i>
                 <span>{item.moreInfo.utilities.length} Utilities</span>
-              </li>
+              </li> */}
             </ul>
             <div className="trending-bottom" style={{ padding: "15px 0px" }}>
               <div className="trend-right float-right">
@@ -149,7 +149,7 @@ class Listings extends Component {
         <div className="filter-wrapper section-padding">
           <div className="container">
             <div className="row">
-              <Filter />
+             <Filter /> 
               <div className="col-md-12">
                 <div className="item-wrapper pt-20">
                   <div className="tab-content" id="myTabContent">

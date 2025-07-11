@@ -18,6 +18,7 @@
     "@babel/cli": "^7.7.5",
     "@babel/core": "^7.10.5",
     "@babel/node": "^7.7.4",
+    "@babel/plugin-transform-block-scoped-functions": "^7.27.1",
     "@babel/plugin-transform-spread": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "babel-loader": "^8.1.0",

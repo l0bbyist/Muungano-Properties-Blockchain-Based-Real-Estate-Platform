@@ -46,7 +46,7 @@ class Profile extends Component {
                           {user.birthday || "Please update your information"}
                         </li>
                         <li>
-                          <span>Hometown:</span>
+                          <span>Postal Code:</span>
                           {user.homeLand || "Please update your information"}
                         </li>
                         <li>

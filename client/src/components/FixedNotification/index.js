@@ -42,7 +42,7 @@ class index extends Component {
           zIndex: "999999999999",
         }}
       >
-        Please contact a notary to verify the account
+        Wait For Account Verification!
       </div>
     ) : (
       ""

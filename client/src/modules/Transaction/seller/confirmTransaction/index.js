@@ -143,33 +143,42 @@ const ConfirmTransaction = (props) => {
         </DialogTitle>
         <DialogContent dividers>
           <div className="agent-details">
-            <h5>Muuzaji</h5>
+            <h5>Mnunuzi</h5>
             <ol className="address-list">
               <li>
-                a) ;
+                a) Pay the seller in full, on time and in the agreed manner.
               </li>
               <li>
-                b) 
+                b) Muuzaji anathibitisha kuwa kiwanja kinamilikiwa kihalali kwa jina lake na hakina mgogoro wowote wa kisheria. 
+              </li>
+              <li>
+                c) Mnunuzi atapatiwa nakala halisi au zilizothibitishwa za hati ya umiliki pamoja na nyaraka zote muhimu za ardhi.
+              </li>
+              <li>
+                d) Mnunuzi ana haki ya kufanya uhakiki wa umiliki na mipaka ya kiwanja kupitia Wizara ya Ardhi au Serikali za Mitaa kabla ya kumalizia malipo.
+              </li>
+              <li>
+                e) Kiwanja kinauzwa bila kuwa na rehani, deni la ardhi (land rent), au wajibu mwingine wa kifedha.
+              </li>
+              <li>
+                f) Iwapo utagundulika udanganyifu kwenye mchakato au nyaraka, mnunuzi ana haki ya kughairi muamala na kudai fidia.
               </li>
             </ol>
           </div>
           <div className="agent-details">
-            <h5>Seller's Guarantee</h5>
+            <h5>Muuzaji</h5>
             <ol className="address-list">
               <li>
-                a) ;
+                a) Muuzaji anahakikisha kuwa yeye ndiye mmiliki halali na peke yake wa kiwanja na ana mamlaka ya kuuza.
               </li>
               <li>
-                b) ;
+                b) Muuzaji anathibitisha kuwa hakuna mtu mwingine anayedai umiliki wa kiwanja hicho, ikiwemo migogoro ya kifamilia au mirathi.
               </li>
               <li>
-                c) ;
+                c) Muuzaji atatoa maelezo yote ya kweli kuhusu historia ya kiwanja, matumizi yaliyopita, na wamiliki wa awali (kama walikuwepo). 
               </li>
               <li>
-                d) ;
-              </li>
-              <li>
-                e) 
+                d) Muuzaji atashirikiana na mnunuzi katika mchakato mzima wa kuhamisha hati ya kiwanja kwa jina la mnunuzi, ikiwemo kusaini nyaraka zote zinazohitajika. 
               </li>
             </ol>
           </div>

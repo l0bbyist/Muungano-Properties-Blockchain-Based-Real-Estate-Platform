@@ -135,7 +135,7 @@ const CustomizedExpansionPanels = (props) => {
 
   return (
     <div className="container mt-85 mb-100">
-      <h3>Quá trình giao dịch tài sản</h3>
+      <h3>Asset Transaction Process</h3>
       <ExpansionPanel
         square
         expanded={expanded === "panel1"}
@@ -146,7 +146,7 @@ const CustomizedExpansionPanels = (props) => {
           id="panel1d-header"
         >
           <Typography style={{ color: "green" }}>
-            Thông tin giao dịch {""}
+            Transaction Information {""}
             <i className="far fa-check-circle" style={{ color: "green" }}></i>
           </Typography>
         </ExpansionPanelSummary>

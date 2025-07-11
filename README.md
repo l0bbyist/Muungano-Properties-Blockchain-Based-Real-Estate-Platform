@@ -1,5 +1,13 @@
 # Muungano Properties - Blockchain Based Property Management & Transactions Platform {Secure. Trusted. Reliable.}
 
+## Technologies
+- Ganache (Blockchain Network)
+- Truffle (Eth env)
+- Metamask (Eth wallet)
+- ReactJS
+- NodeJS
+- MongoDB
+- Solidity
 
 ## Smart contract
 

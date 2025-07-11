@@ -16,7 +16,7 @@ const Payment = (props) => {
           />
           <h5 className="mb-5">You have accepted the transaction</h5>
           {props.transaction.state == "DEPOSIT_CONFIRMED" && (
-            <p> Please wait for the buyer to pay the remaining amount!</p>
+            <p> Please wait for the to pay the remaining amount!</p>
           )}
           <hr />
 

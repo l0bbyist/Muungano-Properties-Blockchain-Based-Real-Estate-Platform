@@ -113,7 +113,7 @@ class EditProfile extends Component {
                         </div>
                         <div className="col-md-12">
                           <div className="form-group">
-                            <label>Place Of Origin</label>
+                            <label>Postal Code</label>
                             <Field
                               component="input"
                               name="homeLand"

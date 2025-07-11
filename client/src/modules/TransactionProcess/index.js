@@ -263,7 +263,7 @@ const TransactionProcess = (props) => {
               </div>
             </div>
             <div className="row">
-              Xem toàn bộ giao dịch chuyển đến trang khách
+              View all transactions transferred to the guest page
             </div>
             <div className="row">
               <button
@@ -275,7 +275,7 @@ const TransactionProcess = (props) => {
                   )
                 }
               >
-                <i className="ion-android-cancel"></i> Hủy bỏ giao dịch
+                <i className="ion-android-cancel"></i> Cancel Transaction
               </button>
             </div>
             {/*/row*/}

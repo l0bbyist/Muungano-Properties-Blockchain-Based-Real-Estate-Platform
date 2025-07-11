@@ -11,8 +11,8 @@ const StepOne = (props) => {
             width="150"
             className="my-50"
           />
-          <h5 className="mb-5">Bạn có lời đề nghị đặt cọc</h5>
-          <p> Chúc bạn mua bán thành công!</p>
+          <h5 className="mb-5">You have a deposit offer</h5>
+          <p> Vigezo & Masharti Kuzingatiwa!</p>
           <hr />
         </div>
       </div>

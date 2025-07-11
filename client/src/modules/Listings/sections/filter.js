@@ -19,32 +19,32 @@ export default class Filter extends Component {
                   </div>
                 </div>
                 <div className="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12 py-3 pl-30 pr-0">
-                  <select className="hero__form-input  custom-select">
+                  {/*<select className="hero__form-input  custom-select">
                     <option>Asset Type</option>
                     <option>Land</option>
                     <option>Residential House</option>
                     <option>Appartment</option>
-                  </select>
+                  </select> */}
                 </div>
-                <div className="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12 py-3 pl-30 pr-0">
-                  <select className="hero__form-input  custom-select">
+               <div className="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12 py-3 pl-30 pr-0">
+                 {/*<select className="hero__form-input  custom-select">
                     <option>Bedroom</option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
                     <option>4</option>
                     <option>5</option>
-                  </select>
+                  </select> */}
                 </div>
                 <div className="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12 py-3 pl-30 pr-0">
-                  <select className="hero__form-input  custom-select">
+                  {/* <select className="hero__form-input  custom-select">
                     <option>Bathroom</option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
                     <option>4</option>
-                    <option>5</option>
-                  </select>
+                    <option>5</option> 
+                  </select> */}
                 </div>
                 <div className="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12 py-3 pl-30 pr-0">
                   <div className="submit_btn">

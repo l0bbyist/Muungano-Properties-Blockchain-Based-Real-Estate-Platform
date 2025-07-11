@@ -76,7 +76,7 @@ class HomePage extends Component {
                             cursor: "pointer"
                           }}
                         >
-                         Connect To Uhuru Blockchain
+                         Uhuru Blockchain
                         </button>
                         
                       </div>

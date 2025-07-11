@@ -7,24 +7,17 @@ import DialogActions from "@material-ui/core/DialogActions";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToastSuccess from "../../components/ToastCustom/ToastSuccess";
-
 import axios from "axios";
 import Cookie from "../../helper/cookie";
+import verificationData from './id_verification_data.json';
 
 export default class ManagementUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
       columns: [
-        // { title: "No", field: "tableData.id" },
-        {
-          title: "NIDA ID",
-          field: "idNumber",
-        },
-        {
-          title: "Full Name",
-          field: "fullname",
-        },
+        { title: "NIDA ID", field: "idNumber" },
+        { title: "Full Name", field: "fullname" },
         {
           title: "Status",
           field: "state",
@@ -36,14 +29,15 @@ export default class ManagementUser extends Component {
       userSelected: {},
       _isLoading: false,
       openAction: false,
+      isIdVerified: false
     };
   }
+
   componentDidMount = async () => {
     this.fetchData();
   };
 
   fetchData = async () => {
-    console.log("index -> fetchData -> fetchData");
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_BASE_URL_API}/users`,
@@ -70,31 +64,50 @@ export default class ManagementUser extends Component {
   };
 
   previewUser = (event, rowData) => {
-    // alert(JSON.stringify(rowData))
-    // let userSelected =
-    this.setState({ openAction: true, userSelected: rowData });
+    const isVerified = verificationData.some(item => 
+      item.fullName.toLowerCase() === rowData.fullname.toLowerCase() && 
+      item.idNumber === rowData.idNumber
+    );
+    
+    this.setState({ 
+      openAction: true, 
+      userSelected: rowData,
+      isIdVerified: isVerified 
+    });
   };
+
   closePreview = () => {
     this.setState({ openAction: false });
   };
 
   verifyAccount = async () => {
-    axios
-      .get(
+    if (!this.state.isIdVerified) {
+      toast.error("Cannot approve - ID verification failed", {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
+      return;
+    }
+
+    try {
+      await axios.get(
         `${process.env.REACT_APP_BASE_URL_API}/users/verify-account?userId=${this.state.userSelected._id}`,
         {
           headers: {
             Authorization: `Bearer ${Cookie.getCookie("accessToken")}`,
           },
         }
-      )
-      .then(() =>
-        toast.success(<ToastSuccess message={"Approved successfully."} />, {
-          position: toast.POSITION.BOTTOM_RIGHT,
-        })
-      )
-      .catch((error) => alert(error))
-      .finally(this.closePreview());
+      );
+      toast.success(<ToastSuccess message={"Approved successfully."} />, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+      this.fetchData();
+    } catch (error) {
+      toast.error("Approval failed: " + error.message, {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
+    } finally {
+      this.closePreview();
+    }
   };
 
   render() {
@@ -104,9 +117,7 @@ export default class ManagementUser extends Component {
           isLoading={this.state._isLoading}
           title="User Management"
           columns={this.state.columns}
-          options={{
-            actionsColumnIndex: -1,
-          }}
+          options={{ actionsColumnIndex: -1 }}
           data={this.state.data}
           actions={[
             (rowData) => ({
@@ -116,13 +127,15 @@ export default class ManagementUser extends Component {
             }),
           ]}
         />
-        <div>
-          <Dialog
-            open={this.state.openAction}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogContent>
+
+        <Dialog
+          open={this.state.openAction}
+          onClose={this.closePreview}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+          maxWidth="md"
+        >
+          <DialogContent>
               <div className="db-add-listing">
                 <div className="row">
                   <div className="col-md-12">
@@ -134,168 +147,102 @@ export default class ManagementUser extends Component {
                           />
                         ))
                       : ""}
-                    <div className="form-group">
-                      <label>Full Name</label>
-                      <input
-                        value={this.state.userSelected.fullname}
-                        disabled={true}
-                        name="fullName"
-                        type="text"
-                        className="form-control filter-input"
-                      />
-                    </div>
+
+                  <div className="form-group">
+                    <label className="font-weight-bold">Full Name</label>
+                    <input
+                      value={this.state.userSelected.fullname || ''}
+                      disabled
+                      type="text"
+                      className="form-control"
+                    />
                   </div>
-                  <div className="col-md-12">
-                    <div className="form-group">
-                      <label>NIDA ID</label>
+
+                  <div className="form-group">
+                    <label className="font-weight-bold">NIDA ID</label>
+                    <div className="d-flex align-items-center">
                       <input
-                        name="idNumber"
-                        type="text"
-                        className="form-control filter-input"
-                        value={this.state.userSelected.idNumber}
-                        disabled={true}
+                        value={this.state.userSelected.idNumber || ''}
+                        disabled
+                        className="form-control"
                       />
+                      <span className={`ml-2 badge ${this.state.isIdVerified ? 'badge-success' : 'badge-danger'}`}>
+                        {this.state.isIdVerified ? '✓ Matched' : '✗ No Match'}
+                      </span>
                     </div>
+                    {!this.state.isIdVerified && (
+                      <small className="text-danger font-italic">
+                        Cannot approve - ID doesn't match official records
+                      </small>
+                    )}
                   </div>
-                  <div className="col-md-12">
-                    <div className="form-group">
-                      <label>Date Of Birth</label>
-                      <input
-                        name="birthday"
-                        type="text"
-                        className="form-control filter-input"
-                        value={this.state.userSelected.birthday}
-                        disabled={true}
-                      />
-                    </div>
+
+                  <div className="form-group">
+                    <label className="font-weight-bold">Date Of Birth</label>
+                    <input
+                      value={this.state.userSelected.birthday || ''}
+                      disabled
+                      className="form-control"
+                    />
                   </div>
-                  <div className="col-md-12">
-                    <div className="form-group">
-                      <label>Place Of Origin</label>
-                      <input
-                        name="homeLand"
-                        type="text"
-                        className="form-control filter-input"
-                        value={this.state.userSelected.homeLand}
-                        disabled={true}
-                      />
-                    </div>
+
+                  <div className="form-group">
+                    <label className="font-weight-bold">Poastal Code</label>
+                    <input
+                      value={this.state.userSelected.homeLand || ''}
+                      disabled
+                      className="form-control"
+                    />
                   </div>
-                  <div className="col-md-12">
-                    <div className="form-group">
-                      <label>Current Residence</label>
-                      <input
-                        name="permanentResidence"
-                        type="text"
-                        className="form-control filter-input"
-                        value={this.state.userSelected.permanentResidence}
-                        disabled={true}
-                      />
-                    </div>
+
+                  <div className="form-group">
+                    <label className="font-weight-bold">Current Residence</label>
+                    <input
+                      value={this.state.userSelected.permanentResidence || ''}
+                      disabled
+                      className="form-control"
+                    />
                   </div>
-                  {/* <div className="col-md-6">
-                    <div className="form-group">
-                      <label>Dân tộc</label>
-                      <input
-                        name="ethnic"
-                        type="text"
-                        className="form-control filter-input"
-                        value={this.state.userSelected.ethnic}
-                        disabled={true}
-                      />
-                    </div>
+
+                  <div className="form-group">
+                    <label className="font-weight-bold">Phone</label>
+                    <input
+                      value={this.state.userSelected.phoneNumber || ''}
+                      disabled
+                      className="form-control"
+                    />
                   </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label>Tôn giáo</label>
-                      <input
-                        name="religion"
-                        type="text"
-                        className="form-control filter-input"
-                        value={this.state.userSelected.religion}
-                        disabled={true}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-12">
-                    <div className="form-group">
-                      <label>Dấu vết riêng và dị hình</label>
-                      <input
-                        name="deformity"
-                        type="text"
-                        className="form-control filter-input"
-                        value={this.state.userSelected.deformity}
-                        disabled={true}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label>Ngày cấp</label>
-                      <input
-                        name="dateIdNumber"
-                        type="text"
-                        className="form-control filter-input"
-                        value={this.state.userSelected.dateIdNumber}
-                        disabled={true}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label>Nơi cấp</label>
-                      <input
-                        name="placeIdNumber"
-                        type="text"
-                        className="form-control filter-input"
-                        value={this.state.userSelected.placeIdNumber}
-                        disabled={true}
-                      />
-                    </div>
-                  </div> */}
-                  <div className="col-md-12">
-                    <div className="form-group">
-                      <label>Phone</label>
-                      <input
-                        name="phoneNumber"
-                        type="text"
-                        className="form-control filter-input"
-                        value={this.state.userSelected.phoneNumber}
-                        disabled={true}
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-12">
-                    <div className="form-group">
-                      <label>Email</label>
-                      <input
-                        name="email"
-                        type="text"
-                        className="form-control filter-input"
-                        value={this.state.userSelected.email}
-                        disabled={true}
-                      />
-                    </div>
+
+                  <div className="form-group">
+                    <label className="font-weight-bold">Email</label>
+                    <input
+                      value={this.state.userSelected.email || ''}
+                      disabled
+                      className="form-control"
+                    />
                   </div>
                 </div>
               </div>
-              {/* </DialogContentText>
-            </DialogContent> */}
-            </DialogContent>
-            <DialogActions>
-              <Button color="primary" onClick={() => this.closePreview()}>
-                Cancel
-              </Button>
-              <Button
-                color="primary"
-                onClick={() => this.verifyAccount()}
-                autoFocus
-              >
-                Approve
-              </Button>
-            </DialogActions>
-          </Dialog>
-        </div>
+            </div>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.closePreview} color="primary">
+              Cancel
+            </Button>
+            <Button
+              onClick={this.verifyAccount}
+              color="primary"
+              autoFocus
+              disabled={!this.state.isIdVerified}
+              style={{
+                backgroundColor: this.state.isIdVerified ? '#4CAF50' : '#cccccc',
+                color: this.state.isIdVerified ? 'white' : '#666666'
+              }}
+            >
+              Approve
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     );
   }

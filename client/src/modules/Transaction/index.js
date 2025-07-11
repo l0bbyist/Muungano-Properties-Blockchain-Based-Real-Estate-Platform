@@ -293,7 +293,7 @@ const Transaction = (props) => {
                   )
                 }
               >
-                <i className="ion-android-cancel"></i> Hủy bỏ giao dịch
+                <i className="ion-android-cancel"></i> Cancel transaction
               </button> */}
               <CancelModal
                 party={party}
